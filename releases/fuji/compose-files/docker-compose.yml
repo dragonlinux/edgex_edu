@@ -470,13 +470,13 @@ services:
         aliases:
         - edgex-device-virtual
     volumes:
-    - db-data:/data/db
-    - log-data:/edgex/logs
-    - consul-config:/consul/config
-    - consul-data:/consul/data
+      - db-data:/data/db
+      - log-data:/edgex/logs
+      - consul-config:/consul/config
+      - consul-data:/consul/data
     depends_on:
-    - data
-    - command
+      - data
+      - command
 
   device-random:
     image: edgexfoundry/docker-device-random-go:1.1.1
