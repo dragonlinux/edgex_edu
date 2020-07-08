@@ -494,7 +494,7 @@ services:
     depends_on:
       - data
       - command
-  
+
   device-mqtt:
     image: edgexfoundry/docker-device-mqtt-go:1.1.1
     ports:
@@ -512,7 +512,7 @@ services:
     depends_on:
       - data
       - command
-  
+
   # device-modbus:
   #   image: edgexfoundry/docker-device-modbus-go:1.1.1
   #   ports:
