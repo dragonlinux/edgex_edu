@@ -508,7 +508,7 @@ services:
       - log-data:/edgex/logs
       - consul-config:/consul/config
       - consul-data:/consul/data
-      - ./res:/res
+      - ./mqtt/res:/res
     depends_on:
       - data
       - command
