@@ -459,41 +459,41 @@ services:
 # Device Services
 #################################################################
 
-  device-virtual:
-    image: edgexfoundry/docker-device-virtual-go:1.1.1
-    ports:
-    - "49990:49990"
-    container_name: edgex-device-virtual
-    hostname: edgex-device-virtual
-    networks:
-      edgex-network:
-        aliases:
-        - edgex-device-virtual
-    volumes:
-      - db-data:/data/db
-      - log-data:/edgex/logs
-      - consul-config:/consul/config
-      - consul-data:/consul/data
-    depends_on:
-      - data
-      - command
-
-  device-random:
-    image: edgexfoundry/docker-device-random-go:1.1.1
-    ports:
-      - "49988:49988"
-    container_name: edgex-device-random
-    hostname: edgex-device-random
-    networks:
-      - edgex-network
-    volumes:
-      - db-data:/data/db
-      - log-data:/edgex/logs
-      - consul-config:/consul/config
-      - consul-data:/consul/data
-    depends_on:
-      - data
-      - command
+      #  device-virtual:
+      #    image: edgexfoundry/docker-device-virtual-go:1.1.1
+      #    ports:
+      #    - "49990:49990"
+      #    container_name: edgex-device-virtual
+      #    hostname: edgex-device-virtual
+      #    networks:
+      #      edgex-network:
+      #        aliases:
+      #        - edgex-device-virtual
+      #    volumes:
+      #      - db-data:/data/db
+      #      - log-data:/edgex/logs
+      #      - consul-config:/consul/config
+      #      - consul-data:/consul/data
+      #    depends_on:
+      #      - data
+      #      - command
+      #
+      #  device-random:
+      #    image: edgexfoundry/docker-device-random-go:1.1.1
+      #    ports:
+      #      - "49988:49988"
+      #    container_name: edgex-device-random
+      #    hostname: edgex-device-random
+      #    networks:
+      #      - edgex-network
+      #    volumes:
+      #      - db-data:/data/db
+      #      - log-data:/edgex/logs
+      #      - consul-config:/consul/config
+      #      - consul-data:/consul/data
+      #    depends_on:
+      #      - data
+      #      - command
 
   device-mqtt:
     image: edgexfoundry/docker-device-mqtt-go:1.1.1
