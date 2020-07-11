@@ -470,13 +470,13 @@ services:
         aliases:
         - edgex-device-virtual
     volumes:
-    - db-data:/data/db
-    - log-data:/edgex/logs
-    - consul-config:/consul/config
-    - consul-data:/consul/data
+      - db-data:/data/db
+      - log-data:/edgex/logs
+      - consul-config:/consul/config
+      - consul-data:/consul/data
     depends_on:
-    - data
-    - command
+      - data
+      - command
 
   device-random:
     image: edgexfoundry/docker-device-random-go:1.1.1
@@ -494,7 +494,7 @@ services:
     depends_on:
       - data
       - command
-  
+
   device-mqtt:
     image: edgexfoundry/docker-device-mqtt-go:1.1.1
     ports:
@@ -508,47 +508,44 @@ services:
       - log-data:/edgex/logs
       - consul-config:/consul/config
       - consul-data:/consul/data
+      - ./res:/res
     depends_on:
       - data
       - command
-    entrypoint:
-      - /device-mqtt
-      - --registry=consul://edgex-core-consul:8500
-      - --confdir=/custom-config
-  
-  device-modbus:
-    image: edgexfoundry/docker-device-modbus-go:1.1.1
-    ports:
-      - "49991:49991"
-    container_name: edgex-device-modbus
-    hostname: edgex-device-modbus
-    networks:
-      - edgex-network
-    volumes:
-      - db-data:/data/db
-      - log-data:/edgex/logs
-      - consul-config:/consul/config
-      - consul-data:/consul/data
-    depends_on:
-      - data
-      - command
-  
-  device-snmp:
-    image: edgexfoundry/docker-device-snmp-go:1.1.1
-    ports:
-      - "49993:49993"
-    container_name: edgex-device-snmp
-    hostname: edgex-device-snmp
-    networks:
-      - edgex-network
-    volumes:
-      - db-data:/data/db
-      - log-data:/edgex/logs
-      - consul-config:/consul/config
-      - consul-data:/consul/data
-    depends_on:
-      - data
-      - command
+
+  # device-modbus:
+  #   image: edgexfoundry/docker-device-modbus-go:1.1.1
+  #   ports:
+  #     - "49991:49991"
+  #   container_name: edgex-device-modbus
+  #   hostname: edgex-device-modbus
+  #   networks:
+  #     - edgex-network
+  #   volumes:
+  #     - db-data:/data/db
+  #     - log-data:/edgex/logs
+  #     - consul-config:/consul/config
+  #     - consul-data:/consul/data
+  #   depends_on:
+  #     - data
+  #     - command
+
+  # device-snmp:
+  #   image: edgexfoundry/docker-device-snmp-go:1.1.1
+  #   ports:
+  #     - "49993:49993"
+  #   container_name: edgex-device-snmp
+  #   hostname: edgex-device-snmp
+  #   networks:
+  #     - edgex-network
+  #   volumes:
+  #     - db-data:/data/db
+  #     - log-data:/edgex/logs
+  #     - consul-config:/consul/config
+  #     - consul-data:/consul/data
+  #   depends_on:
+  #     - data
+  #     - command
 
 #################################################################
 # UIs
