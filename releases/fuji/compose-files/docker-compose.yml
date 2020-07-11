@@ -495,12 +495,30 @@ services:
       #      - data
       #      - command
 
-  device-mqtt:
-    image: edgexfoundry/docker-device-mqtt-go:1.1.1
+      #  device-mqtt:
+      #    image: edgexfoundry/docker-device-mqtt-go:1.1.1
+      #    ports:
+      #      - "49982:49982"
+      #    container_name: edgex-device-mqtt
+      #    hostname: edgex-device-mqtt
+      #    networks:
+      #      - edgex-network
+      #    volumes:
+      #      - db-data:/data/db
+      #      - log-data:/edgex/logs
+      #      - consul-config:/consul/config
+      #      - consul-data:/consul/data
+      #      - ./mqtt/res:/res
+      #    depends_on:
+      #      - data
+      #      - command
+
+  device-modbus:
+    image: edgexfoundry/docker-device-modbus-go:1.1.1
     ports:
-      - "49982:49982"
-    container_name: edgex-device-mqtt
-    hostname: edgex-device-mqtt
+      - "49991:49991"
+    container_name: edgex-device-modbus
+    hostname: edgex-device-modbus
     networks:
       - edgex-network
     volumes:
@@ -508,27 +526,10 @@ services:
       - log-data:/edgex/logs
       - consul-config:/consul/config
       - consul-data:/consul/data
-      - ./mqtt/res:/res
+      - ./modbus/res:/res
     depends_on:
       - data
       - command
-
-  # device-modbus:
-  #   image: edgexfoundry/docker-device-modbus-go:1.1.1
-  #   ports:
-  #     - "49991:49991"
-  #   container_name: edgex-device-modbus
-  #   hostname: edgex-device-modbus
-  #   networks:
-  #     - edgex-network
-  #   volumes:
-  #     - db-data:/data/db
-  #     - log-data:/edgex/logs
-  #     - consul-config:/consul/config
-  #     - consul-data:/consul/data
-  #   depends_on:
-  #     - data
-  #     - command
 
   # device-snmp:
   #   image: edgexfoundry/docker-device-snmp-go:1.1.1
